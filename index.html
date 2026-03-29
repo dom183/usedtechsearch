@@ -570,6 +570,26 @@
       overflow: hidden;
     }
 
+    .save-btn {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      background: rgba(0,0,0,0.5);
+      border: none;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 15px;
+      transition: transform 0.15s, background 0.15s;
+      z-index: 2;
+    }
+    .save-btn:hover { transform: scale(1.15); background: rgba(0,0,0,0.7); }
+    .save-btn.saved { background: rgba(240,165,0,0.2); }
+
     .card-foot {
       margin-top: auto;
       display: flex;
@@ -895,6 +915,7 @@
             ${l.emoji}
             <span class="badge ${badgeClass}" title="${badgeTip}">${badgeLabel}</span>
             ${l.ago.includes('h ago') ? `<span class="badge badge-new">NEW</span>` : ''}
+            <button class="save-btn" data-id="${l.id}" title="Save listing" onclick="toggleSave(event,${l.id})">🤍</button>
           </div>
           <div class="card-body">
             <div class="card-title">${l.title}</div>
@@ -1003,6 +1024,16 @@
     const count = cat === "all" ? LISTINGS.length : LISTINGS.filter(l => l.cat === cat).length;
     if (count > 0) btn.innerHTML += ` <span style="font-family:'DM Mono',monospace;font-size:10px;opacity:0.5">${count}</span>`;
   });
+
+  // ── Save / favourite ─────────────────────────────────────────
+  const saved = new Set();
+  window.toggleSave = (e, id) => {
+    e.preventDefault();
+    const btn = e.currentTarget;
+    saved.has(id) ? saved.delete(id) : saved.add(id);
+    btn.textContent = saved.has(id) ? '🧡' : '🤍';
+    btn.classList.toggle('saved', saved.has(id));
+  };
 
   // ── Back to top ───────────────────────────────────────────────
   const topBtn = document.getElementById("backToTop");
