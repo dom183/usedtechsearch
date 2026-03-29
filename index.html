@@ -895,6 +895,7 @@
       document.querySelectorAll(".cat-btn").forEach(b => b.classList.remove("active"));
       btn.classList.add("active");
       activeCat = btn.dataset.cat;
+      document.title = activeCat === "all" ? "LocalTech — Find Used Tech Near You" : `${btn.textContent.trim().replace(/\s*\d+\s*$/, '')} — LocalTech`;
       render();
     });
   });
