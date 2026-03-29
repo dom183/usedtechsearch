@@ -741,7 +741,7 @@
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
       </svg>
-      <input type="text" id="headerSearchInput" placeholder="Search listings…">
+      <input type="text" id="headerSearchInput" placeholder="Search listings… (/)">
     </div>
     <div class="header-right">
       <button class="btn-ghost">Sign in</button>
@@ -1023,6 +1023,15 @@
     const cat = btn.dataset.cat;
     const count = cat === "all" ? LISTINGS.length : LISTINGS.filter(l => l.cat === cat).length;
     if (count > 0) btn.innerHTML += ` <span style="font-family:'DM Mono',monospace;font-size:10px;opacity:0.5">${count}</span>`;
+  });
+
+  // ── Keyboard shortcut: "/" focuses search ────────────────────
+  document.addEventListener("keydown", e => {
+    if (e.key === "/" && document.activeElement.tagName !== "INPUT" && document.activeElement.tagName !== "SELECT") {
+      e.preventDefault();
+      document.getElementById("headerSearchInput").focus();
+    }
+    if (e.key === "Escape") document.getElementById("headerSearchInput").blur();
   });
 
   // ── Save / favourite ─────────────────────────────────────────
