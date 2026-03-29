@@ -964,6 +964,13 @@
   }, { threshold: 0.4 });
   io.observe(statsEl);
 
+  // ── Category counts ───────────────────────────────────────────
+  document.querySelectorAll(".cat-btn").forEach(btn => {
+    const cat = btn.dataset.cat;
+    const count = cat === "all" ? LISTINGS.length : LISTINGS.filter(l => l.cat === cat).length;
+    if (count > 0) btn.innerHTML += ` <span style="font-family:'DM Mono',monospace;font-size:10px;opacity:0.5">${count}</span>`;
+  });
+
   // ── Init ──────────────────────────────────────────────────────
   render();
 </script>
