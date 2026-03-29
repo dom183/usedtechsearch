@@ -858,11 +858,12 @@
 
     grid.innerHTML = items.map((l, i) => {
       const badgeClass = { excellent:"badge-excellent", good:"badge-good", fair:"badge-fair" }[l.cond];
+      const thumbBg = { phones:"rgba(96,165,250,0.08)", laptops:"rgba(167,139,250,0.08)", gaming:"rgba(74,222,128,0.08)", audio:"rgba(251,191,36,0.08)", cameras:"rgba(248,113,113,0.08)", tablets:"rgba(34,211,238,0.08)", components:"rgba(240,165,0,0.08)" }[l.cat] || "transparent";
       const badgeLabel = { excellent:"Excellent", good:"Good", fair:"Fair" }[l.cond];
       const badgeTip   = { excellent:"Like new — minimal signs of use", good:"Works perfectly, light wear", fair:"Fully functional, visible wear" }[l.cond];
       return `
         <a class="card" href="#" style="animation-delay:${i * 0.038}s" onclick="return false">
-          <div class="card-img">
+          <div class="card-img" style="background-color:${thumbBg}">
             ${l.emoji}
             <span class="badge ${badgeClass}" title="${badgeTip}">${badgeLabel}</span>
           </div>
