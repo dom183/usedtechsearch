@@ -129,6 +129,28 @@
     .header-search input::placeholder { color: var(--text-dim); }
     .header-search input:focus { border-color: var(--accent); }
 
+    .clear-btn {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: var(--border);
+      border: none;
+      color: var(--text-dim);
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      font-size: 11px;
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+      transition: background 0.15s, color 0.15s;
+    }
+    .clear-btn:hover { background: var(--border-hover); color: var(--text); }
+    .clear-btn.visible { display: flex; }
+
     .header-right {
       margin-left: auto;
       display: flex;
@@ -742,6 +764,7 @@
         <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
       </svg>
       <input type="text" id="headerSearchInput" placeholder="Search listings… (/)">
+      <button class="clear-btn" id="clearSearch" title="Clear search">×</button>
     </div>
     <div class="header-right">
       <button class="btn-ghost">Sign in</button>
@@ -949,8 +972,20 @@
   });
 
   // ── Header search ─────────────────────────────────────────────
-  document.getElementById("headerSearchInput").addEventListener("input", e => {
+  const searchInput = document.getElementById("headerSearchInput");
+  const clearBtn = document.getElementById("clearSearch");
+
+  searchInput.addEventListener("input", e => {
     activeSearch = e.target.value;
+    clearBtn.classList.toggle("visible", e.target.value.length > 0);
+    render();
+  });
+
+  clearBtn.addEventListener("click", () => {
+    searchInput.value = "";
+    activeSearch = "";
+    clearBtn.classList.remove("visible");
+    searchInput.focus();
     render();
   });
 
