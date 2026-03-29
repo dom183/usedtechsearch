@@ -539,6 +539,7 @@
     .badge-excellent { background: rgba(74,222,128,0.12); color: #4ADE80; border: 1px solid rgba(74,222,128,0.25); }
     .badge-good      { background: rgba(96,165,250,0.12); color: #60A5FA; border: 1px solid rgba(96,165,250,0.25); }
     .badge-fair      { background: rgba(251,191,36,0.12); color: #FBBF24; border: 1px solid rgba(251,191,36,0.25); }
+    .badge-new       { background: rgba(240,165,0,0.15); color: var(--accent); border: 1px solid rgba(240,165,0,0.3); position:absolute; top:10px; left:10px; }
 
     .card-body {
       padding: 14px 16px 16px;
@@ -866,6 +867,7 @@
           <div class="card-img" style="background-color:${thumbBg}">
             ${l.emoji}
             <span class="badge ${badgeClass}" title="${badgeTip}">${badgeLabel}</span>
+            ${l.ago.includes('h ago') ? `<span class="badge badge-new">NEW</span>` : ''}
           </div>
           <div class="card-body">
             <div class="card-title">${l.title}</div>
