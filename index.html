@@ -25,6 +25,15 @@
 
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), #ffcc44, var(--accent));
+      z-index: 9998;
+    }
+
     html { scroll-behavior: smooth; }
 
     body {
