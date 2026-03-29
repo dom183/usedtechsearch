@@ -857,11 +857,12 @@
     grid.innerHTML = items.map((l, i) => {
       const badgeClass = { excellent:"badge-excellent", good:"badge-good", fair:"badge-fair" }[l.cond];
       const badgeLabel = { excellent:"Excellent", good:"Good", fair:"Fair" }[l.cond];
+      const badgeTip   = { excellent:"Like new — minimal signs of use", good:"Works perfectly, light wear", fair:"Fully functional, visible wear" }[l.cond];
       return `
         <a class="card" href="#" style="animation-delay:${i * 0.038}s" onclick="return false">
           <div class="card-img">
             ${l.emoji}
-            <span class="badge ${badgeClass}">${badgeLabel}</span>
+            <span class="badge ${badgeClass}" title="${badgeTip}">${badgeLabel}</span>
           </div>
           <div class="card-body">
             <div class="card-title">${l.title}</div>
