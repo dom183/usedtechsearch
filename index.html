@@ -864,7 +864,7 @@
 <!-- ──────────── LISTINGS ──────────── -->
 <main class="listings">
   <div class="listings-meta">
-    <div class="result-count"><strong id="resultCount">14</strong> listings near San Francisco, CA</div>
+    <div class="result-count"><strong id="resultCount">14</strong> listings near <span id="resultLocation">San Francisco, CA</span></div>
     <div class="radius-control">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/>
@@ -940,6 +940,7 @@
     if (activeSort === "newest")     items.sort((a,b) => b.id - a.id);
 
     document.getElementById("resultCount").textContent = items.length;
+    document.getElementById("resultLocation").textContent = document.getElementById("locationInput").value || "your area";
 
     const grid = document.getElementById("grid");
 
