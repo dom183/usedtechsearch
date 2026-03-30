@@ -1092,7 +1092,14 @@
       e.preventDefault();
       document.getElementById("headerSearchInput").focus();
     }
-    if (e.key === "Escape") document.getElementById("headerSearchInput").blur();
+    if (e.key === "Escape") {
+      const input = document.getElementById("headerSearchInput");
+      input.value = "";
+      activeSearch = "";
+      clearBtn.classList.remove("visible");
+      input.blur();
+      render();
+    }
   });
 
   // ── Save / favourite ─────────────────────────────────────────
