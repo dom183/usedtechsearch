@@ -1039,6 +1039,7 @@
     navigator.geolocation.getCurrentPosition(
       () => {
         document.getElementById("locationInput").value = "Your Current Location";
+        dot.classList.remove("live");
       },
       () => {
         setTimeout(() => dot.classList.remove("live"), 2500);
