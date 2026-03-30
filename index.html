@@ -847,6 +847,7 @@
     <button class="cat-btn" data-cat="cameras">📷 Cameras</button>
     <button class="cat-btn" data-cat="tablets">📟 Tablets</button>
     <button class="cat-btn" data-cat="components">🖥️ Components</button>
+    <button class="cat-btn" data-cat="wearables">⌚ Wearables</button>
     <div class="filter-sep"></div>
     <div class="filter-tail">
       <span class="sort-lbl">Sort</span>
@@ -912,7 +913,7 @@
     { id:12, title:"SteelSeries Arctis Nova Pro",           cat:"audio",      emoji:"🎧", price:130,  dist:7.1,  cond:"fair",      desc:"Mic is perfect. Ear pads show wear. Base station and all cables included.", ago:"5d ago" },
     { id:13, title:"Raspberry Pi 5 — 8GB (Sealed)",         cat:"components", emoji:"🖥️", price:88,   dist:7.5,  cond:"excellent", desc:"Bought two, only needed one. Never opened. In original packaging.",        ago:"1d ago" },
     { id:14, title:"Google Pixel 7a 128GB Charcoal",        cat:"phones",     emoji:"📱", price:310,  dist:8.2,  cond:"good",      desc:"Small chip on bottom corner, face unlock and fingerprint work fine.",      ago:"2d ago" },
-    { id:15, title:"Apple Watch Series 9 45mm Midnight",    cat:"phones",     emoji:"⌚", price:245,  dist:3.7,  cond:"excellent", desc:"Always-on display, GPS model. Comes with original band and charger.",      ago:"3h ago" },
+    { id:15, title:"Apple Watch Series 9 45mm Midnight",    cat:"wearables",  emoji:"⌚", price:245,  dist:3.7,  cond:"excellent", desc:"Always-on display, GPS model. Comes with original band and charger.",      ago:"3h ago" },
   ];
 
   // ── State ─────────────────────────────────────────────────────
@@ -954,7 +955,7 @@
 
     grid.innerHTML = items.map((l, i) => {
       const badgeClass = { excellent:"badge-excellent", good:"badge-good", fair:"badge-fair" }[l.cond];
-      const thumbBg = { phones:"rgba(96,165,250,0.08)", laptops:"rgba(167,139,250,0.08)", gaming:"rgba(74,222,128,0.08)", audio:"rgba(251,191,36,0.08)", cameras:"rgba(248,113,113,0.08)", tablets:"rgba(34,211,238,0.08)", components:"rgba(240,165,0,0.08)" }[l.cat] || "transparent";
+      const thumbBg = { phones:"rgba(96,165,250,0.08)", laptops:"rgba(167,139,250,0.08)", gaming:"rgba(74,222,128,0.08)", audio:"rgba(251,191,36,0.08)", cameras:"rgba(248,113,113,0.08)", tablets:"rgba(34,211,238,0.08)", components:"rgba(240,165,0,0.08)", wearables:"rgba(192,132,252,0.08)" }[l.cat] || "transparent";
       const badgeLabel = { excellent:"Excellent", good:"Good", fair:"Fair" }[l.cond];
       const badgeTip   = { excellent:"Like new — minimal signs of use", good:"Works perfectly, light wear", fair:"Fully functional, visible wear" }[l.cond];
       return `
